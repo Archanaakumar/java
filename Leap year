@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class LeapYearChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+        scanner.close();
+
+        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+
+        if (isLeap) {
+            System.out.println(year + " is a Leap Year.");
+        } else {
+            System.out.println(year + " is NOT a Leap Year.");
+            
+            int nextLeapYear = year + 1;
+            while (true) {
+                if ((nextLeapYear % 4 == 0 && nextLeapYear % 100 != 0) || (nextLeapYear % 400 == 0)) {
+                    break;
+                }
+                nextLeapYear++;
+            }
+            int yearsLeft = nextLeapYear - year;
+            System.out.println("Years to be left (until the next leap year): " + yearsLeft + " (Year " + nextLeapYear + ")");
+        }
+    }
+}
